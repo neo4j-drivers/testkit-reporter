@@ -3,8 +3,9 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"github.com/fbiville/testkit-reporter/pkg/parser"
 	"os"
+
+	"github.com/fbiville/testkit-reporter/pkg/parser"
 )
 
 func main() {
