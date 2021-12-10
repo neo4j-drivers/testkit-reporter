@@ -3,7 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"github.com/fbiville/testkit-something/pkg/parser"
+	"github.com/fbiville/testkit-reporter/pkg/parser"
 	"os"
 )
 

@@ -1,7 +1,7 @@
 package parser_test
 
 import (
-	"github.com/fbiville/testkit-something/pkg/parser"
+	"github.com/fbiville/testkit-reporter/pkg/parser"
 	"reflect"
 	"strings"
 	"testing"
