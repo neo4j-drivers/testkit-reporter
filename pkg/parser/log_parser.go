@@ -3,19 +3,9 @@ package parser
 import (
 	"fmt"
 	"regexp"
+
+	. "github.com/fbiville/testkit-reporter/pkg/entity"
 )
-
-type SkippedTest struct {
-	Method string
-	Class  string
-	Reason string
-
-	FeatureFlags []string
-}
-
-func (s SkippedTest) String() string {
-	return fmt.Sprintf("%s %s.%s: %s", s.FeatureFlags, s.Class, s.Method, s.Reason)
-}
 
 type LogParser interface {
 	Parse(line []byte) *SkippedTest
