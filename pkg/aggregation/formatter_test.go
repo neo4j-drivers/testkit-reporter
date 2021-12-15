@@ -20,8 +20,8 @@ func TestFormatting(st *testing.T) {
 
 | reason             | test count |
 | ------------------ | ---------- |
-| skipped it         | 1          |
 | skipped it as well | 2          |
+| skipped it         | 1          |
 `
 
 	st.Run("arranges data by test count", func(t *testing.T) {
