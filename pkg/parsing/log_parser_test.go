@@ -1,10 +1,12 @@
-package parser_test
+package parsing_test
 
 import (
-	"github.com/fbiville/testkit-reporter/pkg/parser"
 	"reflect"
 	"strings"
 	"testing"
+
+	"github.com/fbiville/testkit-reporter/pkg/entity"
+	"github.com/fbiville/testkit-reporter/pkg/parsing"
 )
 
 const simpleTeamcityLog = `
@@ -17,10 +19,10 @@ const expectedClass = "tests.neo4j.test_summary.TestSummary"
 const expectedMethod = "test_summary_counters_case_2"
 
 func TestLogParser(st *testing.T) {
-	logParser := parser.NewLogParser()
+	logParser := parsing.NewLogParser()
 
 	st.Run("parses simple Teamcity log line", func(t *testing.T) {
-		expected := &parser.SkippedTest{
+		expected := &entity.SkippedTest{
 			Class:  expectedClass,
 			Method: expectedMethod,
 			Reason: "YOLO",
@@ -32,7 +34,7 @@ func TestLogParser(st *testing.T) {
 	})
 
 	st.Run("parses Teamcity log line with feature flags", func(t *testing.T) {
-		expected := &parser.SkippedTest{
+		expected := &entity.SkippedTest{
 			Class:        expectedClass,
 			Method:       expectedMethod,
 			Reason:       "Needs support for Feature.TMP_FULL_SUMMARY, Feature.TMP_RESULT_KEYS",
@@ -45,7 +47,7 @@ func TestLogParser(st *testing.T) {
 	})
 }
 
-func AssertSkippedTest(t *testing.T, expected *parser.SkippedTest, actual *parser.SkippedTest) {
+func AssertSkippedTest(t *testing.T, expected *entity.SkippedTest, actual *entity.SkippedTest) {
 	if expected.Class != actual.Class {
 		t.Errorf("Expected class %q, got %q", expected.Class, actual.Class)
 	}
