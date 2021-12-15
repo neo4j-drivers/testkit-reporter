@@ -1,4 +1,4 @@
-package parser_test
+package parsing_test
 
 import (
 	"reflect"
@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	"github.com/fbiville/testkit-reporter/pkg/entity"
-	"github.com/fbiville/testkit-reporter/pkg/parser"
+	"github.com/fbiville/testkit-reporter/pkg/parsing"
 )
 
 const simpleTeamcityLog = `
@@ -19,7 +19,7 @@ const expectedClass = "tests.neo4j.test_summary.TestSummary"
 const expectedMethod = "test_summary_counters_case_2"
 
 func TestLogParser(st *testing.T) {
-	logParser := parser.NewLogParser()
+	logParser := parsing.NewLogParser()
 
 	st.Run("parses simple Teamcity log line", func(t *testing.T) {
 		expected := &entity.SkippedTest{

@@ -5,10 +5,9 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/fbiville/testkit-reporter/pkg/aggregator"
+	"github.com/fbiville/testkit-reporter/pkg/aggregation"
 	. "github.com/fbiville/testkit-reporter/pkg/entity"
-	. "github.com/fbiville/testkit-reporter/pkg/formatter"
-	"github.com/fbiville/testkit-reporter/pkg/parser"
+	"github.com/fbiville/testkit-reporter/pkg/parsing"
 )
 
 func main() {
@@ -23,11 +22,11 @@ func main() {
 		}
 	}()
 
-	var aggregator = aggregator.New()
-	var skippedTests []SkippedTest
-
+	aggregator := aggregation.New()
 	reader := bufio.NewReader(file)
-	logParser := parser.NewLogParser()
+	logParser := parsing.NewLogParser()
+
+	var skippedTests []SkippedTest
 	for {
 		line, _, err := reader.ReadLine()
 		if line != nil && err == nil {
@@ -41,6 +40,6 @@ func main() {
 		break
 	}
 
-	fmt.Println(FormatTableAsCountByKey("Skipped Tests by Feature Flags", "Feature", "Tests", aggregator.ByFeatureFlags()))
-	fmt.Println(FormatTableAsCountByKey("Skipped Tests by Reason", "Reason", "Tests", aggregator.ByReason()))
+	fmt.Println(aggregation.FormatTableByTestCount("Skipped Tests by Feature Flags", "Feature", "Tests", aggregator.ByFeatureFlags()))
+	fmt.Println(aggregation.FormatTableByTestCount("Skipped Tests by Reason", "Reason", "Tests", aggregator.ByReason()))
 }

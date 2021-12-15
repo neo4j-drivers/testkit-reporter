@@ -1,4 +1,4 @@
-package aggregator
+package aggregation
 
 import (
 	. "github.com/fbiville/testkit-reporter/pkg/entity"
@@ -19,6 +19,7 @@ func New() *aggregator {
 func (a *aggregator) ByReason() map[string][]SkippedTest {
 	return a.byReason
 }
+
 func (a *aggregator) ByFeatureFlags() map[string][]SkippedTest {
 	return a.byFeatureFlags
 }
@@ -28,16 +29,14 @@ func (a *aggregator) Aggregate(skippedTest *SkippedTest) {
 		for _, feature := range skippedTest.FeatureFlags {
 			a.byFeatureFlags = aggregate(a.byFeatureFlags, feature, skippedTest)
 		}
-	} else {
-		a.byReason = aggregate(a.byReason, skippedTest.Reason, skippedTest)
 	}
+	a.byReason = aggregate(a.byReason, skippedTest.Reason, skippedTest)
 }
 
-func aggregate(aMap map[string][]SkippedTest, key string, skipped *SkippedTest) map[string][]SkippedTest {
-	_, exists := aMap[key]
-	if !exists {
-		aMap[key] = make([]SkippedTest, 0)
+func aggregate(data map[string][]SkippedTest, k string, v *SkippedTest) map[string][]SkippedTest {
+	if _, exists := data[k]; !exists {
+		data[k] = make([]SkippedTest, 0)
 	}
-	aMap[key] = append(aMap[key], *skipped)
-	return aMap
+	data[k] = append(data[k], *v)
+	return data
 }
