@@ -1,7 +1,7 @@
 package aggregation
 
 import (
-	. "github.com/fbiville/testkit-reporter/pkg/entity"
+	. "github.com/neo4j-drivers/testkit-reporter/pkg/entity"
 )
 
 type aggregator struct {

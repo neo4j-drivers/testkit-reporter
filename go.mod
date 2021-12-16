@@ -1,4 +1,4 @@
-module github.com/fbiville/testkit-reporter
+module github.com/neo4j-drivers/testkit-reporter
 
 go 1.17
 

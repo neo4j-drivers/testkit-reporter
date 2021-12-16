@@ -5,8 +5,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/fbiville/testkit-reporter/pkg/entity"
-	"github.com/fbiville/testkit-reporter/pkg/parsing"
+	"github.com/neo4j-drivers/testkit-reporter/pkg/entity"
+	"github.com/neo4j-drivers/testkit-reporter/pkg/parsing"
 )
 
 const simpleTeamcityLog = `
