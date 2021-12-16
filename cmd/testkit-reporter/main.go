@@ -3,9 +3,9 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"github.com/fbiville/testkit-reporter/pkg/aggregation"
-	. "github.com/fbiville/testkit-reporter/pkg/entity"
-	"github.com/fbiville/testkit-reporter/pkg/parsing"
+	"github.com/neo4j-drivers/testkit-reporter/pkg/aggregation"
+	. "github.com/neo4j-drivers/testkit-reporter/pkg/entity"
+	"github.com/neo4j-drivers/testkit-reporter/pkg/parsing"
 	"os"
 )
 

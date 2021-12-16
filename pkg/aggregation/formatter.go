@@ -3,7 +3,7 @@ package aggregation
 import (
 	"fmt"
 	"github.com/fbiville/markdown-table-formatter/pkg/markdown"
-	. "github.com/fbiville/testkit-reporter/pkg/entity"
+	. "github.com/neo4j-drivers/testkit-reporter/pkg/entity"
 	"strconv"
 )
 

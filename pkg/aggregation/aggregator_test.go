@@ -1,8 +1,8 @@
 package aggregation_test
 
 import (
-	"github.com/fbiville/testkit-reporter/pkg/aggregation"
-	"github.com/fbiville/testkit-reporter/pkg/entity"
+	"github.com/neo4j-drivers/testkit-reporter/pkg/aggregation"
+	"github.com/neo4j-drivers/testkit-reporter/pkg/entity"
 	"reflect"
 	"testing"
 )
