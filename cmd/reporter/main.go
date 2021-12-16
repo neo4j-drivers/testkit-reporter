@@ -3,27 +3,15 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"os"
-
 	"github.com/fbiville/testkit-reporter/pkg/aggregation"
 	. "github.com/fbiville/testkit-reporter/pkg/entity"
 	"github.com/fbiville/testkit-reporter/pkg/parsing"
+	"os"
 )
 
 func main() {
-	file, err := os.Open("build.log")
-	if err != nil {
-		panic(err)
-	}
-	defer func() {
-		err := file.Close()
-		if err != nil {
-			panic(err)
-		}
-	}()
-
 	aggregator := aggregation.New()
-	reader := bufio.NewReader(file)
+	reader := bufio.NewReader(os.Stdin)
 	logParser := parsing.NewLogParser()
 
 	var skippedTests []SkippedTest
